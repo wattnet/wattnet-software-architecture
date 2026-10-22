@@ -12,7 +12,7 @@
 
 # Software Architecture
 
-C4 model of the wattnet software architecture: the open-source application itself (dashboard, API, core engine, forecast engine, storage and data). This repository contains diagrams and code (Structurizr DSL) that document the software's structure, components, and interactions across multiple levels of abstraction.
+C4 model of the Wattnet software architecture: the open-source application itself (dashboard, API, core engine, forecast engine, storage and data). This repository contains diagrams and code (Structurizr DSL) that document the software's structure, components, and interactions across multiple levels of abstraction.
 
 ## Overview
 
