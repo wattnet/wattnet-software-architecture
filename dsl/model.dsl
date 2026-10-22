@@ -19,7 +19,7 @@
         elexon_api = softwareSystem "Elexon Insights API" "Elexon Insights RESTful API for operational data about the electricity system in Great Britain." "External" {
         }
 
-        epias_api = softwareSystem "EPIAS Public API" "EPIAS (Energy Exchange Istanbul) transparency platform RESTful API for the electricity market of Turkey: generation and load." "External" {
+        epias_api = softwareSystem "EPİAŞ Public API" "EPİAŞ (Energy Exchange Istanbul) transparency platform RESTful API for the electricity market of Turkey: generation and load." "External" {
         }
 
         wattnet = softwareSystem "${WATTNET_SYSTEM_NAME}" "An open-source service for tracking the environmental footprint of electricity across Europe." {
@@ -107,7 +107,7 @@
 
                             elexon_client = component "Elexon Provider Client" "Retrieves electricity data from Elexon API." "Python"
 
-                            epias_client = component "EPIAS Provider Client" "Retrieves generation and load from the EPIAS API, and the imports and exports of the Turkish zone from ENTSO-E." "Python"
+                            epias_client = component "EPİAŞ Provider Client" "Retrieves generation and load from the EPİAŞ API, and the imports and exports of the Turkish zone from ENTSO-E." "Python"
 
                             provider_staging_cache = component "Provider Staging Cache" "Persists pre-processed API responses to disk, avoiding redundant external calls." "FileSystem"
                         
