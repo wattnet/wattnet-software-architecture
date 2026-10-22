@@ -19,7 +19,7 @@
         elexon_api = softwareSystem "Elexon Insights API" "Elexon Insights RESTful API for operational data about the electricity system in Great Britain." "External" {
         }
 
-        epias_api = softwareSystem "EPIAS Transparency Platform" "EPIAS (Energy Exchange Istanbul) transparency platform RESTful API for the electricity market of Turkey: generation and load." "External" {
+        epias_api = softwareSystem "EPIAS Public API" "EPIAS (Energy Exchange Istanbul) transparency platform RESTful API for the electricity market of Turkey: generation and load." "External" {
         }
 
         wattnet = softwareSystem "${WATTNET_SYSTEM_NAME}" "An open-source service for tracking the environmental footprint of electricity across Europe." {
