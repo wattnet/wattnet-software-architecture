@@ -10,9 +10,9 @@
   </picture>
 </div>
 
-# Platform Architecture
+# Software Architecture
 
-C4 model of the Wattnet platform architecture. This repository contains diagrams and code (Structurizr DSL) that document the system’s structure, components, and interactions across multiple levels of abstraction.
+C4 model of the wattnet software architecture: the open-source application itself (dashboard, API, core engine, forecast engine, storage and data). This repository contains diagrams and code (Structurizr DSL) that document the software's structure, components, and interactions across multiple levels of abstraction.
 
 ## Overview
 
@@ -41,7 +41,7 @@ Then open [http://localhost:8080](http://localhost:8080) in your browser. Struct
 ## Repository structure
 
 - `/diagrams`: Contains the generated diagrams in various formats (PNG, SVG, etc.).
-- `/dsl`: Contains the Structurizr DSL code used to generate the diagrams.
+- `/dsl`: Contains the Structurizr DSL code used to generate the diagrams. `model.dsl` describes the software, `styles.dsl` its look, and `workspace.dsl` the views and puts them together. The model and the styles are plain fragments so that other workspaces can include them.
 - `/docs`: Contains documentation on architectural decisions, design fundamentals, and other relevant information.
 
 ## License
