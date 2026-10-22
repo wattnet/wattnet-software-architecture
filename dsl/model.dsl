@@ -53,9 +53,6 @@
 
                 grafana = container "Grafana" "Metrics visualization and \n monitoring dashboards. \n Only for monitoring." "Docker: grafana/grafana" "Dashboard/Monitor"{
                 }
-
-                tools = container "Data Tools" "Command-line tools for dataset extractor, analyzer, and visualizer." "Python" "Dashboard/Monitor"{
-                }
             }
 
             backend = group  "Backend" {
@@ -274,8 +271,6 @@
         wattnet.storage.clickhouse_client -> wattnet.storage.clickhouse "Reads / Writes" "SQL"
 
         wattnet.grafana -> wattnet.storage.clickhouse "Queries" "SQL"
-        wattnet.tools -> wattnet.storage.metrics_repository "Reads" 
-        wattnet.tools -> wattnet.zone_data.map_geometries "Reads" "GEOJSON Files"
 
         wattnet.forecast_engine.manager -> wattnet.forecast_engine.forecast_manager "Uses"
         wattnet.forecast_engine.storage_manager -> wattnet.storage.metrics_repository "Reads / Writes"
