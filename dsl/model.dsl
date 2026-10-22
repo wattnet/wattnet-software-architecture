@@ -19,7 +19,7 @@
         elexon_api = softwareSystem "Elexon Insights API" "Elexon Insights RESTful API for operational data about the electricity system in Great Britain." "External" {
         }
 
-        wattnet = softwareSystem "wattnet" "An open-source service for tracking the environmental footprint of electricity across Europe." {
+        wattnet = softwareSystem "${WATTNET_SYSTEM_NAME}" "An open-source service for tracking the environmental footprint of electricity across Europe." {
 
             frontend = group "Frontend" {
                 dashboard = container "Web Dashboard" " The web dashboard lets you explore all metrics in a clear, interactive, and visually engaging interface. " "React" "Dashboard" {
