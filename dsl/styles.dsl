@@ -35,15 +35,9 @@
                 color #94CE24
             }
 
-            element "Dashboard" {
+            element "Web UI" {
                 shape webbrowser
                 background #5374A7
-                color #ffffff
-            }
-
-            element "Dashboard/Monitor" {
-                shape webbrowser
-                background #5588e6
                 color #ffffff
             }
 
@@ -90,7 +84,7 @@
 
             element "Infrastructure Node" {
                 shape roundedbox
-                background #94CE24
+                background #D9DEE7
                 color #0B1C38
             }
 

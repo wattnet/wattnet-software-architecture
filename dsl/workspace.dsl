@@ -2,6 +2,9 @@ workspace "wattnet" "An open-source service for tracking the environmental footp
 
     !identifiers hierarchical
 
+    # Display name of the system. Another workspace that includes model.dsl can define it before the include.
+    !const WATTNET_SYSTEM_NAME "wattnet"
+
     # Model
 
     model {
