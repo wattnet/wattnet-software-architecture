@@ -19,9 +19,6 @@
         elexon_api = softwareSystem "Elexon Insights API" "Elexon Insights RESTful API for operational data about the electricity system in Great Britain." "External" {
         }
 
-        epias_api = softwareSystem "EPİAŞ Public API" "EPİAŞ (Energy Exchange Istanbul) transparency platform RESTful API for the electricity market of Turkey: generation and load." "External" {
-        }
-
         wattnet = softwareSystem "${WATTNET_SYSTEM_NAME}" "An open-source service for tracking the environmental footprint of electricity across Europe." {
 
             frontend = group "Frontend" {
@@ -106,8 +103,6 @@
                             entsoe_client = component "ENTSOE Provider Client" "Retrieves electricity data from ENTSO-E API." "Python"
 
                             elexon_client = component "Elexon Provider Client" "Retrieves electricity data from Elexon API." "Python"
-
-                            epias_client = component "EPİAŞ Provider Client" "Retrieves generation and load from the EPİAŞ API, and the imports and exports of the Turkish zone from ENTSO-E." "Python"
 
                             provider_staging_cache = component "Provider Staging Cache" "Persists pre-processed API responses to disk, avoiding redundant external calls." "FileSystem"
                         
@@ -245,17 +240,12 @@
         wattnet.core_engine.providers_manager -> wattnet.core_engine.provider_interface "Uses"
         wattnet.core_engine.entsoe_client -> wattnet.core_engine.provider_interface "Implements"
         wattnet.core_engine.elexon_client -> wattnet.core_engine.provider_interface "Implements"
-        wattnet.core_engine.epias_client -> wattnet.core_engine.provider_interface "Implements"
         wattnet.core_engine.entsoe_client -> entsoe_api "Request Data" "web-api.tp.entsoe.eu/api"
         wattnet.core_engine.elexon_client -> elexon_api "Request Data" "data.elexon.co.uk/bmrs/api/v1"
-        wattnet.core_engine.epias_client -> epias_api "Request Data" "seffaflik.epias.com.tr/electricity-service/v1"
-        wattnet.core_engine.epias_client -> entsoe_api "Request Data" "Imports and exports of the Turkish zone"
         wattnet.core_engine.entsoe_client -> wattnet.core_engine.provider_staging_cache "Uses"
         wattnet.core_engine.elexon_client -> wattnet.core_engine.provider_staging_cache "Uses"
-        wattnet.core_engine.epias_client -> wattnet.core_engine.provider_staging_cache "Uses"
         wattnet.core_engine.entsoe_client -> wattnet.core_engine.redis_rate_limiter "Uses"
         wattnet.core_engine.elexon_client -> wattnet.core_engine.redis_rate_limiter "Uses"
-        wattnet.core_engine.epias_client -> wattnet.core_engine.redis_rate_limiter "Uses"
         wattnet.core_engine.redis_rate_limiter -> wattnet.redis "Reads and writes rate limit counters" "Redis Protocol"
 
         wattnet.core_engine.providers_manager -> wattnet.core_engine.outlier_manager "Uses"
