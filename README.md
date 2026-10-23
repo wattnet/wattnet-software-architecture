@@ -44,6 +44,15 @@ Then open [http://localhost:8080](http://localhost:8080) in your browser. Struct
 - `/dsl`: Contains the Structurizr DSL code used to generate the diagrams. `model.dsl` describes the software, `styles.dsl` its look, and `workspace.dsl` the views and puts them together. The model and the styles are plain fragments so that other workspaces can include them.
 - `/docs`: Contains documentation on architectural decisions, design fundamentals, and other relevant information.
 
+## Colors and shapes
+
+Each visual property says one thing and is never reused for another.
+
+| Property | Meaning |
+|---|---|
+| Fill color | The C4 level and who owns it: person `#143262`, system `#1D488C`, container `#5374A7`, component `#9DB2D0`. What is not ours (external systems and applications) is the darkest, `#0B1C38`. |
+| Shape | What it is: a person, a box for a process or service, a cylinder for a database, a browser window for a web interface, a light green folder for data in files, a lime green folder for a repository. |
+
 ## License
 
 This repository is licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
