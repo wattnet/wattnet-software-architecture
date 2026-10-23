@@ -22,7 +22,7 @@
         wattnet = softwareSystem "${WATTNET_SYSTEM_NAME}" "An open-source service for tracking the environmental footprint of electricity across Europe." {
 
             frontend = group "Frontend" {
-                dashboard = container "Web Dashboard" " The web dashboard lets you explore all metrics in a clear, interactive, and visually engaging interface. " "React" "Dashboard" {
+                dashboard = container "Web Dashboard" " The web dashboard lets you explore all metrics in a clear, interactive, and visually engaging interface. " "React" "Web UI" {
 
                     presentation = group "Presentation" {
 
@@ -51,7 +51,7 @@
                     }
                 }
 
-                grafana = container "Grafana" "Metrics visualization and \n monitoring dashboards. \n Only for monitoring." "Docker: grafana/grafana" "Dashboard/Monitor"{
+                grafana = container "Grafana" "Metrics visualization and \n monitoring dashboards. \n Only for monitoring." "Docker: grafana/grafana" "Web UI" {
                 }
             }
 
@@ -171,7 +171,7 @@
                     auto_regressive_predictor = component "Auto-Regressive Predictor" "Predictive model that uses auto-regressive techniques to forecast future metrics based on historical data." "Python"
                 }
 
-                environmental_data = container "Environmental Database" "Environmental factors for electricity generation, covering carbon, water, and scarcity metrics." "YAML Files" "Repository" {
+                environmental_data = container "Environmental Database" "Environmental factors for electricity generation, covering carbon, water, and scarcity metrics." "YAML Files" "Files" {
 
                     carbon_intensity_factors = component "Carbon Intensity Factors" "Life-cycle and operational carbon intensity factors per unit of electricity generated." "YAML File" "Files"
 
@@ -180,7 +180,7 @@
                     water_stress_factors = component "Water Stress Factors" "AWARE-based regional water scarcity characterization factors for weighting water impact." "YAML File" "Files"
                 }
 
-                zone_data = container "Zone Database" "Contains metadata about zones, such as their names, EIC codes, and geographical information." "YAML and GEOJSON Files" "Repository" {
+                zone_data = container "Zone Database" "Contains metadata about zones, such as their names, EIC codes, and geographical information." "YAML and GEOJSON Files" "Files" {
 
                     zones_definition = component "Zones Definition" "Defines zones together with their identifiers, full names, EIC codes, data providers, and cross-border interconnections." "Directory with YAML Files" "Files"
 
