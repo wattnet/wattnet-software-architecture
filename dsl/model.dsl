@@ -57,15 +57,19 @@
 
             backend = group  "Backend" {
 
-                api = container "RESTful API" "Provides a stateless standard interface for accessing environmental impact metrics." "FastAPI" {
+                api = container "RESTful API" "Provides a stateless standard interface for accessing environmental impact metrics, through REST and MCP." "FastAPI" {
 
-                    runner = component "API Runner" "Initializes the FastAPI server and manages the API lifecycle." "Python / Uvicorn"
+                    runner = component "API Runner" "Initializes the FastAPI server, mounts the REST and MCP interfaces and manages the API lifecycle." "Python / Uvicorn"
 
                     v1 = group "v1" {
 
                         metric_controller = component "Generic Metric Controller" "Handles requests related to system domain entities, such as zones and metrics, and routes them to the appropriate service methods." "Python / FastAPI"
-                        
+
                     }
+
+                    mcp_server = component "MCP Server" "Exposes the read operations as MCP tools for LLMs and agents. Each tool runs the handler of its REST endpoint, so both interfaces share the validation, the access tiers and the services." "Python / MCP SDK"
+
+                    access_policy = component "Access Policy" "Applies the limits of the access tier of the request (endpoint groups, zones per query, range, history and forecast) to REST and MCP alike." "Python"
 
                     metrics_service = component "Generic Metric Service" "Contains the business logic for processing and retrieving environmental impact metrics." "Python"
 
@@ -219,7 +223,13 @@
         wattnet.dashboard.live_refresh -> wattnet.dashboard.api_gateway "Probe" "/api/metrics"
         wattnet.dashboard.api_gateway -> wattnet.api.runner "Request" "api.wattnet.eu/v1"
 
+        external_consumer -> wattnet.api.runner "Request (MCP)" "mcp.wattnet.eu/mcp"
+
         wattnet.api.runner -> wattnet.api.metric_controller "Routes Requests"
+        wattnet.api.runner -> wattnet.api.mcp_server "Routes Requests" "/mcp"
+        wattnet.api.mcp_server -> wattnet.api.metric_controller "Runs the endpoint handlers"
+        wattnet.api.metric_controller -> wattnet.api.access_policy "Applies the tier"
+        wattnet.api.mcp_server -> wattnet.api.access_policy "Applies the tier"
         wattnet.api.metric_controller -> wattnet.api.metrics_service "Uses"
         wattnet.api.metrics_service -> wattnet.api.geo_service "Uses"
         wattnet.api.geo_service -> wattnet.zone_data.zone_geometries "Reads" "YAML Files"
